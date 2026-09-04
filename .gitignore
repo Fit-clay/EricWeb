@@ -1,0 +1,48 @@
+# dependencies
+/node_modules/
+/.pnp/
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# tests and generated builds
+/coverage/
+/.next/
+/out/
+/dist/
+/.vinext/
+/.wrangler/
+/next-env.d.ts
+
+# runtime data
+/data/*.sqlite
+/data/*.sqlite-shm
+/data/*.sqlite-wal
+
+# local environment and deployment configuration
+.env*
+!.env.example
+/.deploy.env
+
+# local SSH credentials
+/yes
+/yes.pub
+/id_*
+*.key
+*.pem
+
+# logs and operating-system files
+.DS_Store
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# hosting and temporary output
+/.vercel/
+/outputs/
+/work/

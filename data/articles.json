@@ -1,0 +1,32 @@
+[
+  {
+    "id": "ink-space",
+    "title": "水墨界面的留白节奏",
+    "category": "设计",
+    "tags": ["水墨", "排版", "留白"],
+    "cover": "mountain",
+    "content": "## 留白\n\n水墨界面最重要的不是墨，而是纸面留出的呼吸。",
+    "likes": 12,
+    "dislikes": 1
+  },
+  {
+    "id": "ai-chain",
+    "title": "一次 AI 工具链整理",
+    "category": "技术",
+    "tags": ["AI", "工具", "效率"],
+    "cover": "river",
+    "content": "## 工具链\n\n记录一些常用 AI 工具和工作流组合。",
+    "likes": 8,
+    "dislikes": 0
+  },
+  {
+    "id": "slow-variable",
+    "title": "读书笔记：慢变量",
+    "category": "读书",
+    "tags": ["阅读", "笔记", "长期主义"],
+    "cover": "seal",
+    "content": "## 慢变量\n\n真正影响长期结果的，往往是不喧哗的小习惯。",
+    "likes": 6,
+    "dislikes": 2
+  }
+]

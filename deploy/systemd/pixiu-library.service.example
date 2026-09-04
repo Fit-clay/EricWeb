@@ -1,0 +1,24 @@
+[Unit]
+Description=Pixiu Library Next.js service
+After=network.target
+
+[Service]
+Type=simple
+User=pixiu
+Group=pixiu
+WorkingDirectory=/opt/pixiu-library/current
+Environment=NODE_ENV=production
+EnvironmentFile=/etc/pixiu-library.env
+ExecStart=/usr/bin/node /opt/pixiu-library/current/.next/standalone/server.js
+Restart=always
+RestartSec=5
+TimeoutStopSec=20
+KillSignal=SIGTERM
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ReadWritePaths=/var/lib/pixiu-library
+
+[Install]
+WantedBy=multi-user.target
