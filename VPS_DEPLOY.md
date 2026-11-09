@@ -1,24 +1,21 @@
 # Linux/VPS 部署指南
 
-当前项目使用标准 Next.js Node Runtime、SQLite 文件数据库和 standalone 构建，适合单台 Linux/VPS 部署。建议使用 Node.js 22 或 24，并让 Nginx 位于 Node 服务之前。
+当前项目使用标准 Next.js Node Runtime、SQLite 文件数据库和 standalone 构建。发布包自带 Node.js 24，适合单台 Linux/VPS，建议让 Nginx 位于 Node 服务之前。
 
-## 1. 准备服务器目录
+所有依赖安装、编译和测试在本机 Docker Linux 环境完成，服务器只负责运行。Windows 双击 deploy-ui.cmd；详细参数见 [SCRIPT_GUIDE.md](./SCRIPT_GUIDE.md)。
 
-```bash
-sudo useradd --system --home /opt/pixiu-library --shell /usr/sbin/nologin pixiu
-sudo mkdir -p /opt/pixiu-library/current /var/lib/pixiu-library/html
-sudo chown -R pixiu:pixiu /opt/pixiu-library /var/lib/pixiu-library
-```
+## 1. 准备服务器
 
-将项目代码上传到 `/opt/pixiu-library/current`。`better-sqlite3` 包含平台相关二进制文件，因此最稳妥的方式是在目标 Linux 服务器上安装和构建：
+推荐 Ubuntu 24.04+/Debian 12+，使用 root 或 sudo 用户。预先安装运行和解包工具：
 
 ```bash
-cd /opt/pixiu-library/current
-npm ci
-npm run build
+sudo apt-get update
+sudo apt-get install -y python3 curl tar util-linux libstdc++6 ca-certificates
 ```
 
-构建完成后，`.next/standalone` 已包含服务器运行所需文件、静态资源和初始 HTML 示例。
+服务器不需要 Docker、npm、make 或 g++。成品包含 Node.js 24、standalone 网站及原生 SQLite。脚本先检查架构和运行时兼容性，验证失败停止，不在服务器重新编译。
+
+本机安装并启动 Docker Desktop（Linux 容器模式），填写 .deploy.env 后通过发布窗口更新，不要直接上传 Windows 构建。
 
 ## 2. 设置生产环境
 
@@ -41,11 +38,7 @@ sudo chown root:pixiu /etc/pixiu-library.env
 sudo chmod 640 /etc/pixiu-library.env
 ```
 
-如需导入仓库内的示例文章，可在启动服务前执行：
-
-```bash
-sudo -u pixiu env DATABASE_PATH=/var/lib/pixiu-library/pixiu.sqlite npm run db:import
-```
+发布不自动导入示例数据，数据库持续保存在 DATABASE_PATH；可通过管理员入口新增文章。
 
 ## 3. 使用 systemd 运行
 
@@ -94,39 +87,39 @@ sudo systemctl reload nginx
 
 HTML 文件与主站同源，只应放入自己信任的页面；不要允许不受信任的用户直接上传任意 HTML 或 JavaScript。
 
+项目内置的两个 travel 训练页面可通过以下脚本从源目录刷新并上传服务器：
+
+```bash
+./scripts/update-travel-pages.sh
+```
+
+默认源目录为 `/Users/eric/Desktop/AI/travel`，服务器目标目录为 `/var/lib/pixiu-library/html/travel`。只更新仓库副本时使用 `--local-only`，只上传仓库内现有副本时使用 `--deploy-only`。更新完成后刷新 `/preview` 即可，无需重新构建或重启服务。
+
 ## 6. 更新和备份
 
 ### 一键发布（推荐）
 
-首次初始化并安装 systemd 服务后，在本机项目目录执行：
+Windows 双击 deploy-ui.cmd，或在开发电脑执行：
 
-```bash
-cp .deploy.env.example .deploy.env
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\deploy-vps.ps1 -Mode Full
+powershell -ExecutionPolicy Bypass -File .\scripts\deploy-vps.ps1 -Mode Html
 ```
 
-编辑 `.deploy.env`，填写服务器地址和 SSH 用户。若首次部署时修改过应用目录、数据目录或环境文件路径，也应同步修改对应配置。然后执行：
+Full 在本机完成 Linux 构建和 512MB 无 Swap 容器测试后上传，服务器仅验证、切换并运行。已有环境配置保留，健康检查失败恢复旧版本和启动配置。Html 模式不重启网站。
 
-```bash
-./scripts/deploy-vps.sh
-```
+低内存 drop-in 设置 192MB Node 堆上限、256MB MemoryHigh、320MB MemoryMax。512MB 主机仍需给系统和其他进程预留内存，不能保证任意负载下不 OOM。
 
-脚本会上传当前源码，在服务器的新版本目录中执行 `npm ci` 和 `npm test`，测试通过后原子切换 `current` 软链接并重启服务。健康检查失败时会自动恢复旧版本。服务器密码和会话密钥仍保存在 `/etc/pixiu-library.env`，不会上传到源码目录。
+HTML 使用 html-releases 快照和 html 链接切换，保留服务器额外页面与旧版本；备份需包含链接目标，旧版本按需清理。
 
-### 手动更新
-
-每次更新代码后重新执行：
-
-```bash
-npm ci
-npm run test
-sudo systemctl restart pixiu-library
-```
+macOS/Linux 使用 ./scripts/deploy-vps.sh，同样依赖本机 Docker；不能在 512MB 网站服务器上执行本机构建入口。
 
 需要备份以下内容：
 
 ```text
 /var/lib/pixiu-library/pixiu.sqlite
 /var/lib/pixiu-library/html
+/var/lib/pixiu-library/html-releases
 /etc/pixiu-library.env
 ```
 

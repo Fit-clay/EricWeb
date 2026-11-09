@@ -16,6 +16,9 @@
 /.vinext/
 /.wrangler/
 /next-env.d.ts
+/.release/
+__pycache__/
+*.py[cod]
 
 # runtime data
 /data/*.sqlite

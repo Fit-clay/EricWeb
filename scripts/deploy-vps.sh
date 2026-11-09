@@ -13,6 +13,10 @@ if [[ "${1:-}" == "--help" || "${1:-}" == "-h" ]]; then
   编辑 .deploy.env
   ./scripts/deploy-vps.sh
 
+首次部署会为 Ubuntu 自动安装缺少的 Node.js、npm、curl、rsync、
+Python 和原生模块编译工具，并创建运行用户、持久化目录、环境文件
+和 systemd 服务，最后提示输入管理员账号及密码。
+
 也可以传入其他配置文件：
   ./scripts/deploy-vps.sh /path/to/deploy.env
 USAGE
@@ -96,47 +100,49 @@ if ((10#$HEALTHCHECK_PORT < 1 || 10#$HEALTHCHECK_PORT > 65535)); then
   exit 1
 fi
 
-for command_name in ssh rsync; do
+for command_name in ssh scp rsync docker; do
   if ! command -v "$command_name" >/dev/null 2>&1; then
     echo "本机缺少命令：$command_name"
     exit 1
   fi
 done
 
-RELEASE_ID="$(date -u +%Y%m%d%H%M%S)"
+ARCHITECTURE="${DEPLOY_ARCH:-amd64}"
+case "$ARCHITECTURE" in amd64|arm64) ;; *) echo "DEPLOY_ARCH must be amd64 or arm64"; exit 1 ;; esac
+LOCAL_STAGE="$(mktemp -d)"
+trap 'rm -rf -- "$LOCAL_STAGE"' EXIT
+mkdir "$LOCAL_STAGE/source"
+echo "[1/4] Building and testing locally in a Linux container"
+rsync -a \
+  --exclude '.git/' --exclude 'node_modules/' --exclude '.next/' --exclude '.release/' \
+  --exclude '.agents/' --exclude '.codex/' --exclude '.aws/' --exclude '.ssh/' \
+  --exclude '.npm-cache/' --exclude 'outputs/' --exclude 'work/' --exclude 'coverage/' \
+  --exclude '__pycache__/' \
+  --exclude 'dist/' --exclude '.env' --exclude '.env.*' --exclude '.deploy.env' \
+  --exclude "$(basename "$CONFIG_FILE")" --exclude '*.sqlite*' --exclude '*.key' --exclude '*.pem' \
+  --exclude 'id_*' --exclude '*.log' "$PROJECT_ROOT/" "$LOCAL_STAGE/source/"
+IMAGE="pixiu-local-builder:node24-$ARCHITECTURE"
+docker build --platform "linux/$ARCHITECTURE" -t "$IMAGE" -f "$LOCAL_STAGE/source/deploy/Dockerfile.builder" "$LOCAL_STAGE/source/deploy"
+docker run --rm --platform "linux/$ARCHITECTURE" --mount "type=bind,source=$LOCAL_STAGE/source,target=/workspace" "$IMAGE" bash scripts/build-release-local.sh "$ARCHITECTURE"
+docker run --rm --platform "linux/$ARCHITECTURE" --memory=512m --memory-swap=512m --cpus=1 \
+  -e 'NODE_OPTIONS=--max-old-space-size=192 --max-semi-space-size=4' \
+  -e STANDALONE_ROOT=/workspace/.release/payload/.next/standalone \
+  -e STANDALONE_NODE=/workspace/.release/payload/runtime/node \
+  -e HTML_SOURCE_ROOT=/workspace/.release/payload/html-pages \
+  --mount "type=bind,source=$LOCAL_STAGE/source,target=/workspace" "$IMAGE" node --test tests/vps-runtime.test.mjs
+cp "$LOCAL_STAGE/source/.release/release.tar.gz" "$LOCAL_STAGE/release.tar.gz"
+cp "$SCRIPT_DIR/activate-upload-remote.sh" "$SCRIPT_DIR/publish-html-remote.py" "$LOCAL_STAGE/"
+(cd "$LOCAL_STAGE" && if command -v sha256sum >/dev/null; then sha256sum release.tar.gz; else shasum -a 256 release.tar.gz; fi) >"$LOCAL_STAGE/checksum.sha256"
+RELEASE_ID="$(date -u +%Y%m%d%H%M%S)-$RANDOM"
 REMOTE_STAGE=".pixiu-upload-$RELEASE_ID"
 SSH_TARGET="$VPS_SSH_USER@$VPS_HOST"
 SSH_OPTIONS=(-p "$VPS_SSH_PORT" -o ServerAliveInterval=15 -o ServerAliveCountMax=4)
-RSYNC_SSH="ssh -p $VPS_SSH_PORT -o ServerAliveInterval=15 -o ServerAliveCountMax=4"
-
-echo "[1/3] 创建服务器临时目录"
-ssh "${SSH_OPTIONS[@]}" "$SSH_TARGET" \
-  "test ! -e ~/$REMOTE_STAGE && mkdir -p ~/$REMOTE_STAGE"
-
-echo "[2/3] 上传当前源码"
-rsync -az --progress \
-  -e "$RSYNC_SSH" \
-  --exclude '.git/' \
-  --exclude 'node_modules/' \
-  --exclude '.next/' \
-  --exclude 'dist/' \
-  --exclude '.vinext/' \
-  --exclude '.wrangler/' \
-  --exclude '.deploy.env' \
-  --include '.env.example' \
-  --exclude '.env' \
-  --exclude '.env.*' \
-  --exclude 'yes' \
-  --exclude 'yes.pub' \
-  --exclude 'id_*' \
-  --exclude '*.key' \
-  --exclude '*.pem' \
-  --exclude 'data/*.sqlite*' \
-  --exclude '*.log' \
-  "$PROJECT_ROOT/" "$SSH_TARGET:~/$REMOTE_STAGE/"
-
-echo "[3/3] 构建、切换版本并检查服务"
+echo "[2/4] Creating a remote staging directory"
+ssh "${SSH_OPTIONS[@]}" "$SSH_TARGET" "test ! -e ~/$REMOTE_STAGE && mkdir -p ~/$REMOTE_STAGE"
+echo "[3/4] Uploading the completed Linux artifact"
+scp -P "$VPS_SSH_PORT" "$LOCAL_STAGE/release.tar.gz" "$LOCAL_STAGE/checksum.sha256" \
+  "$LOCAL_STAGE/activate-upload-remote.sh" "$LOCAL_STAGE/publish-html-remote.py" "$SSH_TARGET:$REMOTE_STAGE/"
+echo "[4/4] Activating the artifact (no server compilation)"
 ssh -tt "${SSH_OPTIONS[@]}" "$SSH_TARGET" \
-  "bash ~/$REMOTE_STAGE/scripts/deploy-vps-remote.sh ~/$REMOTE_STAGE '$VPS_BASE_DIR' '$VPS_APP_USER' '$VPS_APP_GROUP' '$VPS_SERVICE_NAME' '$VPS_HEALTHCHECK_URL' '$VPS_DATA_DIR' '$VPS_ENV_FILE' '$RELEASE_ID'"
-
-echo "部署完成：$VPS_HOST（版本 $RELEASE_ID）"
+  "bash ~/$REMOTE_STAGE/activate-upload-remote.sh ~/$REMOTE_STAGE Full '$VPS_BASE_DIR' '$VPS_APP_USER' '$VPS_APP_GROUP' '$VPS_SERVICE_NAME' '$VPS_HEALTHCHECK_URL' '$VPS_DATA_DIR' '$VPS_ENV_FILE' '$RELEASE_ID'"
+echo "Deployment completed: $VPS_HOST ($RELEASE_ID)"

@@ -1,0 +1,740 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="初中级哑铃全身无氧训练计划与20个动作GIF图鉴">
+  <title>一周哑铃全身训练计划｜动作 GIF 图鉴</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: light-dark(#f4f7fb, #101419);
+      --surface: light-dark(#ffffff, #191f27);
+      --surface-2: light-dark(#eef3f8, #222a34);
+      --text: light-dark(#17202b, #eef4fa);
+      --muted: light-dark(#5d6977, #aeb9c5);
+      --border: light-dark(#dce4ec, #34404d);
+      --accent: #2f7d5b;
+      --accent-soft: light-dark(#e3f4ec, #17392c);
+      --accent-2: #df7a36;
+      --shadow: 0 12px 36px rgba(20, 37, 53, 0.09);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 8% 2%, light-dark(rgba(47, 125, 91, .13), rgba(47, 125, 91, .17)), transparent 28rem),
+        var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.55;
+    }
+
+    a { color: inherit; }
+
+    .page {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 42px 0 64px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.5fr .9fr;
+      gap: 28px;
+      align-items: stretch;
+      margin-bottom: 26px;
+    }
+
+    .hero-main,
+    .week-card {
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: color-mix(in srgb, var(--surface) 94%, transparent);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-main { padding: clamp(26px, 5vw, 50px); }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--accent);
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 760px;
+      margin: 0;
+      font-size: clamp(34px, 6vw, 66px);
+      line-height: 1.06;
+      letter-spacing: -.045em;
+    }
+
+    .hero-copy {
+      max-width: 720px;
+      margin: 20px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+
+    .stat {
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--surface-2);
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .week-card {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .week-card h2,
+    .section-title h2 { margin: 0; }
+
+    .week-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .week-row {
+      display: grid;
+      grid-template-columns: 48px 1fr auto;
+      align-items: center;
+      gap: 12px;
+      min-height: 54px;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--surface-2);
+    }
+
+    .week-row strong { font-size: 15px; }
+    .week-row span { color: var(--muted); font-size: 13px; }
+
+    .day-dot {
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 11px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 900;
+    }
+
+    .program-section {
+      margin: 28px 0;
+      padding: clamp(22px, 4vw, 34px);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .program-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 18px;
+    }
+
+    .program-heading h2 { margin: 0; font-size: clamp(26px, 4vw, 38px); }
+    .program-heading p { max-width: 620px; margin: 0; color: var(--muted); }
+
+    .program-days {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .program-day {
+      min-width: 0;
+      padding: 17px;
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      background: var(--surface-2);
+    }
+
+    .program-day header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .program-day h3 { margin: 0; font-size: 17px; }
+
+    .program-day .focus {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .program-day ol {
+      display: grid;
+      gap: 9px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .program-day li {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 8px;
+      align-items: baseline;
+      font-size: 13px;
+    }
+
+    .program-day li span:first-child { min-width: 0; }
+    .program-day li strong { white-space: nowrap; color: var(--muted); font-size: 12px; }
+
+    .rest-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 13px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 10px;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 24px 0;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: color-mix(in srgb, var(--surface) 88%, transparent);
+      box-shadow: 0 8px 24px rgba(20, 37, 53, .08);
+      backdrop-filter: blur(16px);
+    }
+
+    .filter-stack { display: grid; gap: 7px; }
+    .filter-line { display: flex; align-items: center; flex-wrap: wrap; gap: 7px; }
+    .filter-label { width: 54px; color: var(--muted); font-size: 12px; font-weight: 900; }
+
+    .filter-button {
+      min-height: 42px;
+      padding: 9px 15px;
+      border: 1px solid transparent;
+      border-radius: 12px;
+      background: transparent;
+      color: var(--muted);
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .filter-button:hover { border-color: var(--border); color: var(--text); }
+
+    .filter-button[aria-pressed="true"] {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .result-count {
+      flex: 0 0 auto;
+      padding-right: 8px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 16px;
+    }
+
+    .section-title p { margin: 0; color: var(--muted); }
+
+    .exercise-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .exercise-card {
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: var(--surface);
+      box-shadow: 0 8px 28px rgba(20, 37, 53, .07);
+    }
+
+    .exercise-card[hidden] { display: none; }
+
+    .media {
+      position: relative;
+      display: grid;
+      place-items: center;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .media img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .number {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: rgba(16, 20, 25, .78);
+      color: white;
+      font-weight: 900;
+      backdrop-filter: blur(6px);
+    }
+
+    .card-body { padding: 18px; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 10px; }
+
+    .tag {
+      padding: 4px 8px;
+      border-radius: 8px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .tag.muscle {
+      background: color-mix(in srgb, var(--accent-2) 13%, transparent);
+      color: light-dark(#9f4c16, #ffb47d);
+    }
+
+    .exercise-card h3 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.25;
+    }
+
+    .english-name {
+      margin: 3px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .prescription {
+      margin: 14px 0 0;
+      padding: 10px 12px;
+      border-left: 3px solid var(--accent);
+      background: var(--surface-2);
+      font-weight: 850;
+    }
+
+    .cue { margin: 12px 0 0; color: var(--muted); font-size: 14px; }
+
+    .source {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 14px;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .source:hover { text-decoration: underline; }
+
+    .notes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .note {
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: var(--surface);
+    }
+
+    .note strong { display: block; margin-bottom: 5px; }
+    .note p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    footer {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 920px) {
+      .hero { grid-template-columns: 1fr; }
+      .program-days { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .exercise-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 640px) {
+      .page { width: min(100% - 20px, 1180px); padding-top: 18px; }
+      .hero-main, .week-card { border-radius: 18px; }
+      .hero-main { padding: 24px 20px; }
+      .week-card { padding: 18px; }
+      .program-section { border-radius: 18px; padding: 20px 16px; }
+      .program-heading { align-items: flex-start; flex-direction: column; gap: 7px; }
+      .program-days { grid-template-columns: 1fr; }
+      .toolbar { align-items: flex-start; top: 6px; }
+      .result-count { display: none; }
+      .filter-label { width: 46px; }
+      .filter-button { padding-inline: 11px; }
+      .exercise-grid, .notes { grid-template-columns: 1fr; }
+      .section-title { align-items: flex-start; flex-direction: column; gap: 5px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+
+    @media print {
+      body { background: white; color: black; }
+      .page { width: 100%; padding: 0; }
+      .toolbar { display: none; }
+      .program-days { grid-template-columns: repeat(2, 1fr); }
+      .program-day { break-inside: avoid; }
+      .exercise-card[hidden] { display: block; }
+      .exercise-grid { grid-template-columns: repeat(2, 1fr); }
+      .exercise-card { box-shadow: none; break-inside: avoid; }
+      .hero-main, .week-card { box-shadow: none; }
+      .source { color: black; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-main">
+        <p class="eyebrow">Dumbbell full-body plan</p>
+        <h1 id="page-title">一周哑铃全身训练<br>动作 GIF 图鉴</h1>
+        <p class="hero-copy">面向健康成年人的哑铃训练图鉴，包含初中级每周 3 练与中级每周 5 练两套方案。完整覆盖胸、背、肩、手臂、臀腿、小腿和核心，只需哑铃与一块可躺卧的地面。</p>
+        <div class="stats" aria-label="计划摘要">
+          <span class="stat">初中级 · 每周 3 练</span>
+          <span class="stat">中级 · 每周 5 练</span>
+          <span class="stat">20 个独立动作</span>
+          <span class="stat">保留 2–3 次余力</span>
+        </div>
+      </div>
+
+      <aside class="week-card" aria-labelledby="week-title">
+        <h2 id="week-title">两套训练方案</h2>
+        <div class="week-list">
+          <div class="week-row"><span class="day-dot">3</span><strong>初中级方案</strong><span>周一 · 三 · 五</span></div>
+          <div class="week-row"><span class="day-dot">5</span><strong>中级方案</strong><span>周一 · 二 · 三 · 五 · 六</span></div>
+          <div class="week-row"><span class="day-dot">休</span><strong>恢复安排</strong><span>中级周四、周日</span></div>
+          <div class="week-row"><span class="day-dot">时</span><strong>单次训练</strong><span>约 45–65 分钟</span></div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="program-section" aria-labelledby="intermediate-title">
+      <div class="program-heading">
+        <div>
+          <p class="eyebrow">Intermediate · 5 training days</p>
+          <h2 id="intermediate-title">中级方案｜每周 5 练</h2>
+        </div>
+        <p>建议已经能稳定完成每周 3 练、动作熟练且恢复良好时采用。周四和周日休息，让同一肌群在主要训练之间获得恢复。</p>
+      </div>
+
+      <div class="program-days">
+        <article class="program-day">
+          <header><h3>周一 · 推</h3><span class="focus">胸肩三头</span></header>
+          <ol>
+            <li><span>03 地板卧推</span><strong>4×6–10</strong></li>
+            <li><span>05 站姿推举</span><strong>3×8–12</strong></li>
+            <li><span>10 窄距地板卧推</span><strong>3×8–12</strong></li>
+            <li><span>12 侧平举</span><strong>3×12–15</strong></li>
+            <li><span>14 头后臂屈伸</span><strong>3×10–15</strong></li>
+          </ol>
+        </article>
+
+        <article class="program-day">
+          <header><h3>周二 · 下肢 A</h3><span class="focus">股四头与臀</span></header>
+          <ol>
+            <li><span>16 双哑铃前蹲</span><strong>4×6–10</strong></li>
+            <li><span>08 反向弓步</span><strong>3×8–12/侧</strong></li>
+            <li><span>09 哑铃臀桥</span><strong>3×10–15</strong></li>
+            <li><span>06 站姿提踵</span><strong>4×12–20</strong></li>
+            <li><span>07 死虫式</span><strong>3×8–12/侧</strong></li>
+          </ol>
+        </article>
+
+        <article class="program-day">
+          <header><h3>周三 · 拉</h3><span class="focus">背部与二头</span></header>
+          <ol>
+            <li><span>04 单臂划船</span><strong>4×8–12/侧</strong></li>
+            <li><span>11 双臂俯身划船</span><strong>3×8–12</strong></li>
+            <li><span>13 锤式弯举</span><strong>3×10–15</strong></li>
+            <li><span>15 侧平板支撑</span><strong>3×30–45秒/侧</strong></li>
+          </ol>
+        </article>
+
+        <article class="program-day">
+          <header><h3>周五 · 下肢 B</h3><span class="focus">臀腿后侧</span></header>
+          <ol>
+            <li><span>02 罗马尼亚硬拉</span><strong>4×8–12</strong></li>
+            <li><span>08 反向弓步</span><strong>3×10/侧</strong></li>
+            <li><span>09 哑铃臀桥</span><strong>3×12–15</strong></li>
+            <li><span>19 单腿提踵</span><strong>3×12–20/侧</strong></li>
+            <li><span>20 单侧提行</span><strong>3×40–60秒/侧</strong></li>
+          </ol>
+        </article>
+
+        <article class="program-day">
+          <header><h3>周六 · 全身</h3><span class="focus">综合与补量</span></header>
+          <ol>
+            <li><span>01 高脚杯深蹲</span><strong>3×10–12</strong></li>
+            <li><span>17 交替地板卧推</span><strong>3×8–10/侧</strong></li>
+            <li><span>04 单臂划船</span><strong>3×10/侧</strong></li>
+            <li><span>18 阿诺德推举</span><strong>3×8–12</strong></li>
+            <li><span>13 锤式弯举</span><strong>2×12–15</strong></li>
+            <li><span>14 头后臂屈伸</span><strong>2×12–15</strong></li>
+          </ol>
+        </article>
+      </div>
+      <div class="rest-strip"><span>周四：完全休息或轻度活动</span><span>周日：完全休息</span><span>连续疲劳时优先减少周六每个动作 1 组</span></div>
+    </section>
+
+    <nav class="toolbar" aria-label="按训练日筛选动作">
+      <div class="filter-stack">
+        <div class="filter-line"><span class="filter-label">图鉴</span><button class="filter-button" type="button" data-filter="all" aria-pressed="false">全部动作</button></div>
+        <div class="filter-line"><span class="filter-label">3 天</span><button class="filter-button" type="button" data-filter="a" aria-pressed="true">周一 A</button><button class="filter-button" type="button" data-filter="b" aria-pressed="false">周三 B</button><button class="filter-button" type="button" data-filter="c" aria-pressed="false">周五 C</button></div>
+        <div class="filter-line"><span class="filter-label">5 天</span><button class="filter-button" type="button" data-filter="i1" aria-pressed="false">周一推</button><button class="filter-button" type="button" data-filter="i2" aria-pressed="false">周二下 A</button><button class="filter-button" type="button" data-filter="i3" aria-pressed="false">周三拉</button><button class="filter-button" type="button" data-filter="i4" aria-pressed="false">周五下 B</button><button class="filter-button" type="button" data-filter="i5" aria-pressed="false">周六全身</button></div>
+      </div>
+      <div class="result-count" aria-live="polite"><span id="visible-count">7</span> 个动作</div>
+    </nav>
+
+    <section aria-labelledby="library-title">
+      <div class="section-title">
+        <h2 id="library-title">动作图鉴</h2>
+        <p>GIF 仅用于理解轨迹；训练时以稳定、无痛的动作范围为准。</p>
+      </div>
+
+      <div class="exercise-grid" id="exercise-grid">
+        <article class="exercise-card" id="exercise-01" data-days="a i5">
+          <div class="media"><span class="number">01</span><img src="dumbbell-workout-assets/01-goblet-squat.gif" alt="高脚杯深蹲动作演示" loading="eager"></div>
+          <div class="card-body"><div class="tags"><span class="tag">周一 A</span><span class="tag muscle">大腿前侧 · 臀</span></div><h3>高脚杯深蹲</h3><p class="english-name">Dumbbell Goblet Squat</p><p class="prescription">3 组 × 8–12 次</p><p class="cue">哑铃贴近胸口，膝盖沿脚尖方向移动，脚掌全程踩稳。</p><a class="source" href="https://www.pinterest.com/pin/goblet-squat--832603049843802501/" target="_blank" rel="noopener">查看网络来源 ↗</a></div>
+        </article>
+
+        <article class="exercise-card" id="exercise-02" data-days="a c i4">
+          <div class="media"><span class="number">02</span><img src="dumbbell-workout-assets/02-romanian-deadlift.gif" alt="哑铃罗马尼亚硬拉动作演示" loading="eager"></div>
+          <div class="card-body"><div class="tags"><span class="tag">周一 A · 周五 C</span><span class="tag muscle">臀 · 大腿后侧</span></div><h3>哑铃罗马尼亚硬拉</h3><p class="english-name">Dumbbell Romanian Deadlift</p><p class="prescription">3 组 × 8–12 次</p><p class="cue">膝盖微屈、臀部向后推，哑铃贴近腿部，背部保持中立。</p><a class="source" href="https://giphy.com/gifs/gymshark-rdl-MDyNRHtMyny0yK9Dr6" target="_blank" rel="noopener">查看网络来源 ↗</a></div>
+        </article>
+
+        <article class="exercise-card" id="exercise-03" data-days="a i1">
+          <div class="media"><span class="number">03</span><img src="dumbbell-workout-assets/03-floor-press.gif" alt="哑铃地板卧推动作演示" loading="eager"></div>
+          <div class="card-body"><div class="tags"><span class="tag">周一 A</span><span class="tag muscle">胸 · 肱三头肌</span></div><h3>哑铃地板卧推</h3><p class="english-name">Dumbbell Floor Press</p><p class="prescription">3 组 × 8–12 次</p><p class="cue">肘部与躯干约呈 30–45°，上臂轻触地面后稳定推起。</p><a class="source" href="https://www.dickssportinggoods.com/protips/sports-and-activities/exercise-and-fitness/how-to-do-the-dumbbell-floor-press" target="_blank" rel="noopener">查看网络来源 ↗</a></div>
+        </article>
+
+        <article class="exercise-card" id="exercise-04" data-days="a c i3 i5">
+          <div class="media"><span class="number">04</span><img src="dumbbell-workout-assets/04-one-arm-row.gif" alt="单臂哑铃划船动作演示" loading="eager"></div>
+          <div class="card-body"><div class="tags"><span class="tag">周一 A · 周五 C</span><span class="tag muscle">背 · 肱二头肌</span></div><h3>单臂哑铃划船</h3><p class="english-name">Single-arm Dumbbell Row</p><p class="prescription">3 组 × 10–12 次／侧</p><p class="cue">髋部后移、两侧肩膀保持水平，将肘部向髋部方向拉。</p><a class="source" href="https://www.ifastfitness.com/blogs/blog/how-to-do-inverted-row" target="_blank" rel="noopener">查看网络来源 ↗</a></div>
+        </article>
+
+        <article class="exercise-card" id="exercise-05" data-days="a i1">
+          <div class="media"><span class="number">05</span><img src="dumbbell-workout-assets/05-overhead-press.gif" alt="站姿哑铃推举动作演示" loading="eager"></div>
+          <div class="card-body"><div class="tags"><span class="tag">周一 A</span><span class="tag muscle">肩 · 肱三头肌</span></div><h3>站姿哑铃推举</h3><p class="english-name">Standing Dumbbell Press</p><p class="prescription">2 组 × 8–12 次</p><p class="cue">收紧腹部和臀部，肋骨不要外翻，避免用腰部后仰借力。</p><a class="source" href="https://giphy.com/gifs/dumbbell-shoulder-press-3vmCnumMmnaU4SUL4w" target="_blank" rel="noopener">查看网络来源 ↗</a></div>
+        </article>
+
+        <article class="exercise-card" id="exercise-06" data-days="a i2">
+          <div class="media"><span class="number">06</span><img src="dumbbell-workout-assets/06-standing-calf-raise.gif" alt="站姿哑铃提踵动作演示" loading="eager"></div>
+          <div class="card-body"><div class="tags"><span class="tag">周一 A</span><span class="tag muscle">小腿</span></div><h3>站姿哑铃提踵</h3><p class="english-name">Standing Dumbbell Calf Raise</p><p class="prescription">2 组 × 12–20 次</p><p class="cue">垂直抬起脚跟，最高点停顿一秒，再缓慢下放。</p><a class="source" href="https://fitnessgarage.app/blog/ar/" target="_blank" rel="noopener">查看网络来源 ↗</a></div>
+        </article>
+
+        <article class="exercise-card" id="exercise-07" data-days="a i2">
+          <div class="media"><span class="number">07</span><img src="dumbbell-workout-assets/07-dead-bug.gif" alt="死虫式动作演示" loading="eager"></div>
+          <div class="card-body"><div class="tags"><span class="tag">周一 A</span><span class="tag muscle">核心抗伸展</span></div><h3>死虫式</h3><p class="english-name">Dead Bug</p><p class="prescription">2 组 × 8–12 次／侧</p><p class="cue">腰背贴住地面，对侧手脚缓慢伸展；腰部一旦抬起就缩小幅度。</p><a class="source" href="https://www.worldgymtaiwan.com/blog/health-knowledge/sports-safety/best-sit-up-alternatives" target="_blank" rel="noopener">查看网络来源 ↗</a></div>
+        </article>
+
+        <article class="exercise-card" id="exercise-08" data-days="b i2 i4" hidden>
+          <div class="media"><span class="number">08</span><img src="dumbbell-workout-assets/08-reverse-lunge.gif" alt="哑铃反向弓步动作演示" loading="lazy"></div>
+          <div class="card-body"><div class="tags"><span class="tag">周三 B</span><span class="tag muscle">大腿 · 臀</span></div><h3>哑铃反向弓步</h3><p class="english-name">Dumbbell Reverse Lunge</p><p class="prescription">3 组 × 8–10 次／侧</p><p class="cue">后脚向后落地，前脚保持稳定，前膝沿脚尖方向移动。</p><a class="source" href="https://www.self.com/gallery/10-minute-total-body-dumbbell-hiit-workout" target="_blank" rel="noopener">查看网络来源 ↗</a></div>
+        </article>
+
+        <article class="exercise-card" id="exercise-09" data-days="b i2 i4" hidden>
+          <div class="media"><span class="number">09</span><img src="dumbbell-workout-assets/09-glute-bridge.gif" alt="哑铃臀桥动作演示" loading="lazy"></div>
+          <div class="card-body"><div class="tags"><span class="tag">周三 B</span><span class="tag muscle">臀 · 大腿后侧</span></div><h3>哑铃臀桥</h3><p class="english-name">Dumbbell Glute Bridge</p><p class="prescription">3 组 × 10–15 次</p><p class="cue">哑铃稳放在髋部，收住肋骨，以臀部发力抬髋而不是过度顶腰。</p><a class="source" href="https://www.speediance.com/blogs/fitness/lower-body-pushing-exercises" target="_blank" rel="noopener">查看网络来源 ↗</a></div>
+        </article>
+
+        <article class="exercise-card" id="exercise-10" data-days="b i1" hidden>
+          <div class="media"><span class="number">10</span><img src="dumbbell-workout-assets/10-close-grip-floor-press.gif" alt="窄距哑铃地板卧推动作演示" loading="lazy"></div>
+          <div class="card-body"><div class="tags"><span class="tag">周三 B</span><span class="tag muscle">胸 · 肱三头肌</span></div><h3>窄距哑铃地板卧推</h3><p class="english-name">Close-grip Dumbbell Floor Press</p><p class="prescription">3 组 × 8–12 次</p><p class="cue">两只哑铃始终相互挤压，肘部靠近身体，受控下放后推起。</p><a class="source" href="https://makeagif.com/gif/floor-press-close-grip-dumbbell-BUxJBf" target="_blank" rel="noopener">查看网络来源 ↗</a></div>
+        </article>
+
+        <article class="exercise-card" id="exercise-11" data-days="b i3" hidden>
+          <div class="media"><span class="number">11</span><img src="dumbbell-workout-assets/11-bent-over-row.gif" alt="双臂俯身哑铃划船动作演示" loading="lazy"></div>
+          <div class="card-body"><div class="tags"><span class="tag">周三 B</span><span class="tag muscle">背 · 后肩</span></div><h3>双臂俯身哑铃划船</h3><p class="english-name">Bent-over Dumbbell Row</p><p class="prescription">3 组 × 8–12 次</p><p class="cue">保持髋铰链和背部平直，同时将两只哑铃拉向腰侧。</p><a class="source" href="https://hips.hearstapps.com/hmg-prod/images/workouts/2016/03/dumbbellrow-1457030613.gif" target="_blank" rel="noopener">查看网络来源 ↗</a></div>
+        </article>
+
+        <article class="exercise-card" id="exercise-12" data-days="b i1" hidden>
+          <div class="media"><span class="number">12</span><img src="dumbbell-workout-assets/12-lateral-raise.gif" alt="哑铃侧平举动作演示" loading="lazy"></div>
+          <div class="card-body"><div class="tags"><span class="tag">周三 B</span><span class="tag muscle">肩中束</span></div><h3>哑铃侧平举</h3><p class="english-name">Dumbbell Lateral Raise</p><p class="prescription">2 组 × 12–15 次</p><p class="cue">肘部微屈，抬到肩部附近即可；避免耸肩和甩动身体。</p><a class="source" href="https://giphy.com/explore/lateral-raise" target="_blank" rel="noopener">查看网络来源 ↗</a></div>
+        </article>
+
+        <article class="exercise-card" id="exercise-13" data-days="b i3 i5" hidden>
+          <div class="media"><span class="number">13</span><img src="dumbbell-workout-assets/13-hammer-curl.gif" alt="锤式弯举动作演示" loading="lazy"></div>
+          <div class="card-body"><div class="tags"><span class="tag">周三 B</span><span class="tag muscle">肱二头肌 · 前臂</span></div><h3>锤式弯举</h3><p class="english-name">Dumbbell Hammer Curl</p><p class="prescription">2 组 × 10–15 次</p><p class="cue">掌心相对、肘部贴近身体，只移动前臂，不要摆动躯干。</p><a class="source" href="https://giphy.com/explore/hammer-curls" target="_blank" rel="noopener">查看网络来源 ↗</a></div>
+        </article>
+
+        <article class="exercise-card" id="exercise-14" data-days="b i1 i5" hidden>
+          <div class="media"><span class="number">14</span><img src="dumbbell-workout-assets/14-overhead-triceps-extension.gif" alt="头后哑铃臂屈伸动作演示" loading="lazy"></div>
+          <div class="card-body"><div class="tags"><span class="tag">周三 B</span><span class="tag muscle">肱三头肌</span></div><h3>头后哑铃臂屈伸</h3><p class="english-name">Overhead Dumbbell Triceps Extension</p><p class="prescription">2 组 × 10–15 次</p><p class="cue">上臂尽量保持竖直，肘尖朝前，收紧核心避免腰部后仰。</p><a class="source" href="https://www.jefit.com/exercises/247/dumbbell-tricep-extension" target="_blank" rel="noopener">查看网络来源 ↗</a></div>
+        </article>
+
+        <article class="exercise-card" id="exercise-15" data-days="b i3" hidden>
+          <div class="media"><span class="number">15</span><img src="dumbbell-workout-assets/15-side-plank.gif" alt="侧平板支撑动作演示" loading="lazy"></div>
+          <div class="card-body"><div class="tags"><span class="tag">周三 B</span><span class="tag muscle">侧腹 · 核心</span></div><h3>侧平板支撑</h3><p class="english-name">Side Plank</p><p class="prescription">2 组 × 20–40 秒／侧</p><p class="cue">头、肩、髋、脚踝尽量连成直线，保持髋部不下沉。</p><a class="source" href="https://in.pinterest.com/pin/689895236671376945/" target="_blank" rel="noopener">查看网络来源 ↗</a></div>
+        </article>
+
+        <article class="exercise-card" id="exercise-16" data-days="c i2" hidden>
+          <div class="media"><span class="number">16</span><img src="dumbbell-workout-assets/16-front-squat.gif" alt="双哑铃前蹲动作演示" loading="lazy"></div>
+          <div class="card-body"><div class="tags"><span class="tag">周五 C</span><span class="tag muscle">大腿 · 臀 · 核心</span></div><h3>双哑铃前蹲</h3><p class="english-name">Dumbbell Front Squat</p><p class="prescription">3 组 × 8–12 次</p><p class="cue">哑铃稳定在肩部，躯干尽量直立，脚掌全程贴地。</p><a class="source" href="https://greatist.com/fitness/30-dumbbell-exercises-missing-your-routine" target="_blank" rel="noopener">查看网络来源 ↗</a></div>
+        </article>
+
+        <article class="exercise-card" id="exercise-17" data-days="c i5" hidden>
+          <div class="media"><span class="number">17</span><img src="dumbbell-workout-assets/17-alternating-floor-press.gif" alt="交替哑铃地板卧推动作演示" loading="lazy"></div>
+          <div class="card-body"><div class="tags"><span class="tag">周五 C</span><span class="tag muscle">胸 · 手臂 · 核心</span></div><h3>交替哑铃地板卧推</h3><p class="english-name">Alternating Dumbbell Floor Press</p><p class="prescription">3 组 × 8–10 次／侧</p><p class="cue">一侧推起时另一侧保持稳定，抵抗身体向一侧旋转。</p><a class="source" href="https://www.anytimefitness.com/blog/beginner-strength-workout-how-to-get-started-in-the-gym" target="_blank" rel="noopener">查看网络来源 ↗</a></div>
+        </article>
+
+        <article class="exercise-card" id="exercise-18" data-days="c i5" hidden>
+          <div class="media"><span class="number">18</span><img src="dumbbell-workout-assets/18-arnold-press.gif" alt="阿诺德推举动作演示" loading="lazy"></div>
+          <div class="card-body"><div class="tags"><span class="tag">周五 C</span><span class="tag muscle">肩</span></div><h3>阿诺德推举</h3><p class="english-name">Arnold Press</p><p class="prescription">2 组 × 8–12 次</p><p class="cue">推举过程中自然旋转掌心；肩部不适时改回普通哑铃推举。</p><a class="source" href="https://giphy.com/explore/arnold-press" target="_blank" rel="noopener">查看网络来源 ↗</a></div>
+        </article>
+
+        <article class="exercise-card" id="exercise-19" data-days="c i4" hidden>
+          <div class="media"><span class="number">19</span><img src="dumbbell-workout-assets/19-single-leg-calf-raise.gif" alt="单腿哑铃提踵动作演示" loading="lazy"></div>
+          <div class="card-body"><div class="tags"><span class="tag">周五 C</span><span class="tag muscle">小腿 · 平衡</span></div><h3>单腿哑铃提踵</h3><p class="english-name">Single-leg Dumbbell Calf Raise</p><p class="prescription">2 组 × 12–15 次／侧</p><p class="cue">必要时用空手轻扶墙面，垂直提踵并控制下放。</p><a class="source" href="https://irace.vn/cach-xu-ly-15-chan-thuong-pho-bien-o-runner/" target="_blank" rel="noopener">查看网络来源 ↗</a></div>
+        </article>
+
+        <article class="exercise-card" id="exercise-20" data-days="c i4" hidden>
+          <div class="media"><span class="number">20</span><img src="dumbbell-workout-assets/20-suitcase-carry.gif" alt="单侧哑铃提行动作演示" loading="lazy"></div>
+          <div class="card-body"><div class="tags"><span class="tag">周五 C</span><span class="tag muscle">核心 · 握力</span></div><h3>单侧哑铃提行／原地踏步</h3><p class="english-name">Suitcase Carry or March</p><p class="prescription">2 组 × 30–45 秒／侧</p><p class="cue">单手持铃并保持双肩水平；空间足够就行走，否则原地交替抬膝。</p><a class="source" href="https://www.menshealth.com/fitness/a20695529/dumbbell-carry/" target="_blank" rel="noopener">查看网络来源 ↗</a></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="notes" aria-label="训练执行要点">
+      <div class="note"><strong>重量怎么选</strong><p>每组结束时还能保持标准动作再做约 2–3 次。最后几次应明显吃力，但不需要练到力竭。</p></div>
+      <div class="note"><strong>组间休息</strong><p>深蹲、硬拉、卧推和划船休息 90–120 秒；小肌群与核心动作休息 45–75 秒。</p></div>
+      <div class="note"><strong>如何进阶</strong><p>连续两次达到次数上限且仍有余力，下次增加重量；固定重量可放慢下放速度或增加次数。</p></div>
+    </section>
+
+    <footer>安全提示：出现锐痛、胸痛、异常气短或眩晕时立即停止。有关节旧伤、心血管疾病或其他慢性病时，请先咨询医生或康复专业人员。GIF 来自公开网络页面，仅作动作轨迹参考，版权归原作者或来源网站所有。</footer>
+  </main>
+
+  <script>
+    (() => {
+      const buttons = [...document.querySelectorAll('.filter-button')];
+      const cards = [...document.querySelectorAll('.exercise-card')];
+      const count = document.getElementById('visible-count');
+
+      const intermediateDays = {
+        i1: {
+          label: '中级 · 周一推',
+          sets: { '03': '4 组 × 6–10 次', '05': '3 组 × 8–12 次', '10': '3 组 × 8–12 次', '12': '3 组 × 12–15 次', '14': '3 组 × 10–15 次' }
+        },
+        i2: {
+          label: '中级 · 周二下肢 A',
+          sets: { '06': '4 组 × 12–20 次', '07': '3 组 × 8–12 次／侧', '08': '3 组 × 8–12 次／侧', '09': '3 组 × 10–15 次', '16': '4 组 × 6–10 次' }
+        },
+        i3: {
+          label: '中级 · 周三拉',
+          sets: { '04': '4 组 × 8–12 次／侧', '11': '3 组 × 8–12 次', '13': '3 组 × 10–15 次', '15': '3 组 × 30–45 秒／侧' }
+        },
+        i4: {
+          label: '中级 · 周五下肢 B',
+          sets: { '02': '4 组 × 8–12 次', '08': '3 组 × 10 次／侧', '09': '3 组 × 12–15 次', '19': '3 组 × 12–20 次／侧', '20': '3 组 × 40–60 秒／侧' }
+        },
+        i5: {
+          label: '中级 · 周六全身',
+          sets: { '01': '3 组 × 10–12 次', '04': '3 组 × 10 次／侧', '13': '2 组 × 12–15 次', '14': '2 组 × 12–15 次', '17': '3 组 × 8–10 次／侧', '18': '3 组 × 8–12 次' }
+        }
+      };
+
+      cards.forEach((card) => {
+        const prescription = card.querySelector('.prescription');
+        const scheduleTag = card.querySelector('.tag:not(.muscle)');
+        prescription.dataset.baseText = prescription.textContent;
+        scheduleTag.dataset.baseText = scheduleTag.textContent;
+      });
+
+      function applyFilter(filter) {
+        let visible = 0;
+        const intermediate = intermediateDays[filter];
+        cards.forEach((card) => {
+          const show = filter === 'all' || card.dataset.days.split(' ').includes(filter);
+          card.hidden = !show;
+          if (show) visible += 1;
+
+          const prescription = card.querySelector('.prescription');
+          const scheduleTag = card.querySelector('.tag:not(.muscle)');
+          const exerciseNumber = card.id.replace('exercise-', '');
+          if (intermediate && intermediate.sets[exerciseNumber]) {
+            prescription.textContent = intermediate.sets[exerciseNumber];
+            scheduleTag.textContent = intermediate.label;
+          } else {
+            prescription.textContent = prescription.dataset.baseText;
+            scheduleTag.textContent = scheduleTag.dataset.baseText;
+          }
+        });
+        count.textContent = String(visible);
+        buttons.forEach((button) => {
+          button.setAttribute('aria-pressed', String(button.dataset.filter === filter));
+        });
+      }
+
+      buttons.forEach((button) => {
+        button.addEventListener('click', () => applyFilter(button.dataset.filter));
+      });
+    })();
+  </script>
+</body>
+</html>

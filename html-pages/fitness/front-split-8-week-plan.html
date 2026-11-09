@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>30岁男性｜8周竖向劈叉训练计划</title>
+  <style>
+    :root{
+      --ink:#17202a;--muted:#68717d;--paper:#f5f2ec;--card:#fffdfa;
+      --red:#df5a3f;--red2:#ff8b68;--blue:#2f6f77;--line:#ded8cf;
+      --good:#33795d;--warn:#9b641b;--shadow:0 16px 38px rgba(36,31,27,.10)
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;color:var(--ink);background:
+      radial-gradient(circle at 5% 0%,rgba(223,90,63,.13),transparent 28rem),
+      radial-gradient(circle at 100% 18%,rgba(47,111,119,.12),transparent 30rem),var(--paper);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;line-height:1.65}
+    img{display:block;width:100%;height:100%;object-fit:cover}
+    button{font:inherit}
+    a{color:var(--blue)}
+    .wrap{width:min(1180px,calc(100% - 32px));margin:auto}
+    .hero{padding:64px 0 34px}
+    .eyebrow{display:inline-flex;gap:8px;align-items:center;padding:7px 12px;border:1px solid rgba(223,90,63,.35);border-radius:999px;color:#a43e29;background:rgba(255,255,255,.64);font-size:13px;font-weight:750;letter-spacing:.08em}
+    h1{font-size:clamp(36px,6vw,72px);line-height:1.03;letter-spacing:-.045em;margin:20px 0 18px;max-width:900px}
+    h1 span{color:var(--red)}
+    .lead{font-size:clamp(17px,2vw,21px);max-width:850px;color:#47515c;margin:0}
+    .hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:22px;margin-top:30px}
+    .hero-card,.panel,.day-card,.move-card,.source-card{background:rgba(255,253,250,.92);border:1px solid rgba(222,216,207,.9);box-shadow:var(--shadow);border-radius:22px}
+    .hero-card{padding:22px}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .stat{padding:15px;border-radius:16px;background:#f4eee7;border:1px solid #e9dfd5}
+    .stat strong{display:block;font-size:25px;line-height:1.1;color:var(--red)}
+    .stat span{font-size:12px;color:var(--muted)}
+    .notice{padding:20px;border-radius:20px;background:#17363a;color:#edf9f8;box-shadow:var(--shadow)}
+    .notice strong{color:#ffb39c}
+    .notice p{margin:7px 0 0;font-size:14px;color:#d7e8e7}
+    .section{padding:28px 0}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:18px;margin-bottom:18px}
+    .section h2{font-size:clamp(28px,4vw,42px);line-height:1.15;margin:0;letter-spacing:-.025em}
+    .section-kicker{color:var(--red);font-weight:800;font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+    .sub{color:var(--muted);max-width:670px;margin:7px 0 0}
+    .phase-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .phase{padding:20px;border:1px solid var(--line);border-radius:18px;background:rgba(255,253,250,.82);position:relative;overflow:hidden}
+    .phase:before{content:"";position:absolute;inset:0 auto 0 0;width:5px;background:var(--red2)}
+    .phase:nth-child(2):before{background:#d59a46}.phase:nth-child(3):before{background:#4b8f82}.phase:nth-child(4):before{background:#315a78}
+    .phase small{font-weight:800;color:var(--muted)}
+    .phase h3{margin:5px 0 8px;font-size:20px}
+    .phase p{margin:0;color:#56606b;font-size:14px}
+    .phase ul{padding-left:18px;margin:10px 0 0;color:#39434c;font-size:14px}
+    .tools{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+    .chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 13px;font-size:13px}
+    .filters{display:flex;gap:8px;flex-wrap:wrap}
+    .filter{border:1px solid var(--line);background:#fff;padding:9px 14px;border-radius:999px;cursor:pointer;color:#4c5661;transition:.18s}
+    .filter:hover,.filter.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+    .week{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .day-card{padding:22px;position:relative;overflow:hidden}
+    .day-card[hidden]{display:none}
+    .day-top{display:flex;justify-content:space-between;gap:14px;align-items:start;border-bottom:1px solid var(--line);padding-bottom:13px;margin-bottom:14px}
+    .day-num{font-size:12px;font-weight:850;color:var(--red);letter-spacing:.1em}
+    .day-card h3{font-size:23px;margin:2px 0 0}
+    .duration{font-size:13px;padding:6px 10px;border-radius:999px;background:#e8f2f1;color:#245b61;white-space:nowrap;font-weight:700}
+    .session{margin:0;padding:0;list-style:none;counter-reset:item}
+    .session li{display:grid;grid-template-columns:30px 90px 1fr auto;gap:10px;padding:10px 0;border-bottom:1px dashed #e5dfd7;align-items:center}
+    .session li:last-child{border:0}
+    .session li:before{counter-increment:item;content:counter(item,decimal-leading-zero);color:#a0a5aa;font:700 12px/24px ui-monospace,SFMono-Regular,Menlo,monospace}
+    .mini-gif{width:90px;height:72px;object-fit:cover;border-radius:11px;background:#ebe7df;border:1px solid #ded8cf}
+    .session b{display:block}.session small{color:var(--muted)}
+    .dose{color:var(--red);font-weight:800;font-size:13px;white-space:nowrap;padding-top:2px}
+    .rest-card{background:#ece9e3;border-style:dashed;box-shadow:none}
+    .move-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+    .move-card{overflow:hidden;box-shadow:0 10px 24px rgba(36,31,27,.08)}
+    .visual{aspect-ratio:4/3;background:#e9e5de;overflow:hidden;position:relative}
+    .visual img{transition:transform .35s}.move-card:hover .visual img{transform:scale(1.025)}
+    .visual .tag{position:absolute;left:10px;top:10px;background:rgba(23,32,42,.86);color:#fff;padding:5px 9px;border-radius:999px;font-size:11px;font-weight:750}
+    .move-body{padding:15px}
+    .move-body h3{margin:0 0 5px;font-size:18px}
+    .move-body p{margin:0;color:#5c6670;font-size:13px}
+    .cue{margin-top:10px!important;padding-top:9px;border-top:1px solid var(--line);color:#2f3b44!important}
+    .rule-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .panel{padding:23px}
+    .panel h3{margin:0 0 10px;font-size:21px}
+    .panel ul{margin:0;padding-left:20px}
+    .panel li{margin:8px 0}
+    .green{border-top:5px solid var(--good)}.amber{border-top:5px solid var(--warn)}
+    .measure{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:15px}
+    .measure div{background:#f5efe8;border:1px solid #eadfd4;border-radius:15px;padding:15px}
+    .measure b{display:block;font-size:19px;color:var(--red)}
+    .sources{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+    .source-card{padding:17px;box-shadow:none}
+    .source-card b{display:block;margin-bottom:5px}.source-card p{font-size:13px;color:var(--muted);margin:0 0 8px}
+    .footer{padding:32px 0 50px;color:var(--muted);font-size:13px}
+    .check{display:inline-flex;align-items:center;gap:7px;margin-top:12px;font-size:13px;color:#4d5861;cursor:pointer}
+    .check input{width:18px;height:18px;accent-color:var(--red)}
+    @media(max-width:900px){.hero-grid,.rule-grid{grid-template-columns:1fr}.phase-grid,.move-grid{grid-template-columns:repeat(2,1fr)}.week{grid-template-columns:1fr}.sources{grid-template-columns:1fr 1fr}}
+    @media(max-width:600px){.wrap{width:min(100% - 22px,1180px)}.hero{padding-top:34px}.stats{grid-template-columns:1fr 1fr}.phase-grid,.move-grid,.sources,.measure{grid-template-columns:1fr}.section-head{align-items:start;flex-direction:column}.session li{grid-template-columns:24px 72px 1fr;align-items:start}.mini-gif{width:72px;height:62px}.dose{grid-column:3}.filters{overflow:auto;flex-wrap:nowrap;width:100%;padding-bottom:4px}.filter{white-space:nowrap}}
+    @media print{body{background:#fff}.filters,.check{display:none}.day-card[hidden]{display:block}.hero,.section{padding:14px 0}.hero-card,.panel,.day-card,.move-card,.source-card{box-shadow:none;break-inside:avoid}.move-grid{grid-template-columns:repeat(2,1fr)}}
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow">FRONT SPLIT · 8 WEEK PLAN</div>
+      <h1>30岁男性<br><span>竖向劈叉</span>渐进训练计划</h1>
+      <p class="lead">每周 5 天、每次约 25～42 分钟。重点不是硬压到底，而是同时提升前腿腘绳肌长度、后腿髋伸展，以及末端角度中的力量与控制。</p>
+      <div class="hero-grid">
+        <div class="hero-card stats">
+          <div class="stat"><strong>8周</strong><span>一个训练周期</span></div>
+          <div class="stat"><strong>5天</strong><span>每周训练频率</span></div>
+          <div class="stat"><strong>25–42′</strong><span>单次训练时长</span></div>
+          <div class="stat"><strong>双侧</strong><span>左右腿同量练习</span></div>
+        </div>
+        <aside class="notice"><strong>结果不设死期限</strong><p>8 周是复测周期，不是“保证落地”的期限。骨性结构、旧伤、训练史和当前离地高度都会影响进度。</p></aside>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head"><div><div class="section-kicker">装备与起点</div><h2>开始前准备</h2><p class="sub">适用于没有急性下肢伤病、能无痛完成弓步和髋铰链的成年人。旧伤或关节卡压者先由医生或物理治疗师评估。</p></div></div>
+        <div class="tools">
+          <span class="chip">瑜伽垫</span><span class="chip">瑜伽砖 × 2</span><span class="chip">毛巾或滑盘</span><span class="chip">稳固长凳/椅子</span><span class="chip">可选：轻哑铃</span><span class="chip">卷尺或同规格瑜伽砖</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head"><div><div class="section-kicker">Progression</div><h2>8周进阶路径</h2><p class="sub">任何阶段只要第二天仍有明显拉伤样疼痛，就退回上一阶段的幅度与组数。</p></div></div>
+        <div class="phase-grid">
+          <article class="phase"><small>第 1–2 周</small><h3>建立动作与耐受</h3><p>拉伸感约 4–5/10，不追求最低点。</p><ul><li>静态动作 2 组</li><li>每组 20–30 秒</li><li>力量动作保留 3 次余力</li></ul></article>
+          <article class="phase"><small>第 3–4 周</small><h3>增加训练量</h3><p>保持髋部朝正前方，再逐步下降。</p><ul><li>静态动作 3 组</li><li>每组 30–40 秒</li><li>每周只增加 1 个变量</li></ul></article>
+          <article class="phase"><small>第 5–6 周</small><h3>加入末端力量</h3><p>在安全角度加入轻度等长收缩与 PNF。</p><ul><li>收缩 5 秒 + 放松 20 秒</li><li>保持 40–60 秒</li><li>竖叉位等长 3×8–10 秒</li></ul></article>
+          <article class="phase"><small>第 7–8 周</small><h3>整合与复测</h3><p>第 7 周巩固，第 8 周先减量再复测。</p><ul><li>支撑竖叉 3×30–45 秒</li><li>第 8 周减量 30–40%</li><li>复测前休息 48 小时</li></ul></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="week-plan">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="section-kicker">Weekly Schedule</div><h2>每周训练安排</h2><p class="sub">每个训练日都先升温。力量动作在前，较长的静态拉伸和竖叉练习放在后面。</p></div>
+          <div class="filters" aria-label="训练日筛选">
+            <button class="filter active" data-filter="all">全部</button><button class="filter" data-filter="d1">周一</button><button class="filter" data-filter="d2">周二</button><button class="filter" data-filter="d3">周三</button><button class="filter" data-filter="d5">周五</button><button class="filter" data-filter="d6">周六</button><button class="filter" data-filter="rest">休息日</button>
+          </div>
+        </div>
+        <div class="week">
+          <article class="day-card" data-day="d1"><div class="day-top"><div><div class="day-num">DAY 01 · 周一</div><h3>前腿腘绳肌</h3></div><span class="duration">约 38 分钟</span></div><ol class="session">
+            <li data-gif="front-split-assets/09-brisk-walking.gif"><div><b>快走升温</b><small>走到身体微热、呼吸稍加快</small></div><span class="dose">5 分钟</span></li>
+            <li data-gif="front-split-assets/10-leg-swing.gif"><div><b>腿前后摆</b><small>从小幅度开始，全程保持躯干稳定</small></div><span class="dose">2×10/侧</span></li>
+            <li data-gif="front-split-assets/07-romanian-deadlift.gif"><div><b>罗马尼亚硬拉</b><small>髋后移、背部中立，慢速下放 3 秒</small></div><span class="dose">3×8–10</span></li>
+            <li data-gif="front-split-assets/17-active-straight-leg-raise.gif"><div><b>仰卧主动直腿抬高</b><small>主动抬腿，不用手或弹力带牵拉</small></div><span class="dose">3×8/侧</span></li>
+            <li data-gif="front-split-assets/03-half-split-hamstring.gif"><div><b>半劈叉腘绳肌拉伸</b><small>骨盆朝前，脊柱延长后从髋折叠</small></div><span class="dose">3×30–45秒</span></li>
+            <li data-gif="front-split-assets/20-front-split.gif"><div><b>支撑竖叉</b><small>双手用瑜伽砖支撑，左右同量练习</small></div><span class="dose">2×20–30秒/侧</span></li>
+          </ol><label class="check"><input type="checkbox" data-check="d1"> 本周已完成</label></article>
+
+          <article class="day-card" data-day="d2"><div class="day-top"><div><div class="day-num">DAY 02 · 周二</div><h3>后腿髋屈肌与股四头</h3></div><span class="duration">约 35 分钟</span></div><ol class="session">
+            <li data-gif="front-split-assets/09-brisk-walking.gif"><div><b>快走升温</b><small>体温升高后再进入较深角度</small></div><span class="dose">4 分钟</span></li>
+            <li data-gif="front-split-assets/11-hip-circle.gif"><div><b>站姿髋绕环</b><small>扶稳固定物，膝盖画圈但骨盆不晃</small></div><span class="dose">2×8/侧</span></li>
+            <li data-gif="front-split-assets/10-leg-swing.gif"><div><b>腿前后摆</b><small>摆动平顺，不追求最高幅度</small></div><span class="dose">2×10/侧</span></li>
+            <li data-gif="front-split-assets/12-reverse-lunge.gif"><div><b>反向弓步</b><small>躯干直立，后腿臀部主动收紧</small></div><span class="dose">3×8/侧</span></li>
+            <li data-gif="front-split-assets/13-hip-flexor.gif"><div><b>跪姿髋屈肌拉伸</b><small>先后倾骨盆，再轻微向前移；不要塌腰</small></div><span class="dose">3×30–45秒</span></li>
+            <li data-gif="front-split-assets/18-couch-stretch.gif"><div><b>沙发式股四头拉伸</b><small>后膝有软垫，收臀并保持肋骨下沉</small></div><span class="dose">2×30秒/侧</span></li>
+            <li data-gif="front-split-assets/06-glute-bridge.gif"><div><b>臀桥</b><small>顶部夹臀，不以腰椎过伸换高度</small></div><span class="dose">3×12</span></li>
+            <li data-gif="front-split-assets/20-front-split.gif"><div><b>支撑竖叉</b><small>后腿膝盖朝下，髋点朝正前方</small></div><span class="dose">2×20–30秒/侧</span></li>
+          </ol><label class="check"><input type="checkbox" data-check="d2"> 本周已完成</label></article>
+
+          <article class="day-card" data-day="d3"><div class="day-top"><div><div class="day-num">DAY 03 · 周三</div><h3>力量与主动柔韧</h3></div><span class="duration">约 42 分钟</span></div><ol class="session">
+            <li data-gif="front-split-assets/09-brisk-walking.gif"><div><b>快走升温</b><small>先让身体微热</small></div><span class="dose">4 分钟</span></li>
+            <li data-gif="front-split-assets/10-leg-swing.gif"><div><b>腿前后摆</b><small>全程保持可控</small></div><span class="dose">2×10/侧</span></li>
+            <li data-gif="front-split-assets/12-reverse-lunge.gif"><div><b>徒手反向弓步</b><small>作为力量训练前的专项热身</small></div><span class="dose">1×8/侧</span></li>
+            <li data-gif="front-split-assets/08-bulgarian-split-squat.gif"><div><b>保加利亚分腿蹲</b><small>在稳定范围内下蹲，前脚完整踩地</small></div><span class="dose">3×8/侧</span></li>
+            <li data-gif="front-split-assets/14-lateral-lunge.gif"><div><b>侧向弓步</b><small>臀部后移，弯曲侧膝盖跟随脚尖</small></div><span class="dose">3×6/侧</span></li>
+            <li data-gif="front-split-assets/15-single-leg-glute-bridge.gif"><div><b>单腿臀桥</b><small>骨盆保持水平，顶部用臀部完成髋伸</small></div><span class="dose">3×8/侧</span></li>
+            <li data-gif="front-split-assets/17-active-straight-leg-raise.gif"><div><b>仰卧主动直腿抬高</b><small>抬到能控制的位置停 1 秒</small></div><span class="dose">3×8/侧</span></li>
+            <li data-gif="front-split-assets/20-front-split.gif"><div><b>竖叉位“拖地”等长</b><small>双脚像要向中间拖但不移动，力度仅 30–40%</small></div><span class="dose">3×8–10秒</span></li>
+          </ol><label class="check"><input type="checkbox" data-check="d3"> 本周已完成</label></article>
+
+          <article class="day-card rest-card" data-day="rest"><div class="day-top"><div><div class="day-num">DAY 04 · 周四</div><h3>完全休息</h3></div><span class="duration">恢复</span></div><p>可轻松步行，但不做深度拉伸或强力下压。若前一日肌肉酸痛明显，周五训练量减少 20%。</p></article>
+
+          <article class="day-card" data-day="d5"><div class="day-top"><div><div class="day-num">DAY 05 · 周五</div><h3>PNF 与竖叉整合</h3></div><span class="duration">约 40 分钟</span></div><ol class="session">
+            <li data-gif="front-split-assets/09-brisk-walking.gif"><div><b>快走升温</b><small>本日角度较深，升温不可省略</small></div><span class="dose">6 分钟</span></li>
+            <li data-gif="front-split-assets/10-leg-swing.gif"><div><b>腿前后摆</b><small>逐渐增加摆幅，仍需可控</small></div><span class="dose">2×12/侧</span></li>
+            <li data-gif="front-split-assets/19-low-lunge.gif"><div><b>动态低弓步</b><small>前后缓慢移动，不在末端弹震</small></div><span class="dose">2×8/侧</span></li>
+            <li data-gif="front-split-assets/03-half-split-hamstring.gif"><div><b>动态半劈叉</b><small>从屈膝到伸膝缓慢切换，保持方髋</small></div><span class="dose">2×8/侧</span></li>
+            <li data-gif="front-split-assets/16-hamstring-strap-stretch.gif"><div><b>腘绳肌 PNF</b><small>脚跟向下压带 5 秒，放松后保持 20 秒</small></div><span class="dose">2轮/侧</span></li>
+            <li data-gif="front-split-assets/13-hip-flexor.gif"><div><b>髋屈肌 PNF</b><small>后膝轻压垫 5 秒，收臀后放松 20 秒</small></div><span class="dose">2轮/侧</span></li>
+            <li data-gif="front-split-assets/20-front-split.gif"><div><b>方髋滑入竖叉</b><small>用瑜伽砖控制深度，下降和退出都要主动</small></div><span class="dose">2×6/侧</span></li>
+            <li data-gif="front-split-assets/20-front-split.gif"><div><b>支撑竖叉停留</b><small>保持呼吸；角度宁浅勿歪髋</small></div><span class="dose">3×30秒/侧</span></li>
+          </ol><label class="check"><input type="checkbox" data-check="d5"> 本周已完成</label></article>
+
+          <article class="day-card" data-day="d6"><div class="day-top"><div><div class="day-num">DAY 06 · 周六</div><h3>轻恢复与技术</h3></div><span class="duration">约 25 分钟</span></div><ol class="session">
+            <li data-gif="front-split-assets/09-brisk-walking.gif"><div><b>轻松步行</b><small>只需微微发热</small></div><span class="dose">8 分钟</span></li>
+            <li data-gif="front-split-assets/10-leg-swing.gif"><div><b>小幅腿前后摆</b><small>全程可控，不甩腿</small></div><span class="dose">2×10/侧</span></li>
+            <li data-gif="front-split-assets/19-low-lunge.gif"><div><b>低弓步</b><small>强度 3/10，保持顺畅呼吸</small></div><span class="dose">2×30秒/侧</span></li>
+            <li data-gif="front-split-assets/03-half-split-hamstring.gif"><div><b>半劈叉</b><small>保持背部平直，不追求手碰地</small></div><span class="dose">2×30秒/侧</span></li>
+            <li data-gif="front-split-assets/20-front-split.gif"><div><b>轻度支撑竖叉</b><small>比周五至少高一块砖，作为技术复习</small></div><span class="dose">1–2×20秒/侧</span></li>
+          </ol><label class="check"><input type="checkbox" data-check="d6"> 本周已完成</label></article>
+
+          <article class="day-card rest-card" data-day="rest"><div class="day-top"><div><div class="day-num">DAY 07 · 周日</div><h3>完全休息</h3></div><span class="duration">恢复</span></div><p>不测试最低点。保证睡眠与正常蛋白质摄入，为下周训练保留恢复空间。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head"><div><div class="section-kicker">Complete GIF Library</div><h2>完整动作 GIF 图库</h2><p class="sub">训练表中出现的每一个动作都在下方配有 GIF；同一基础姿势的 PNF 与等长版本另外标注收缩方法。全部文件已下载到本地。</p></div></div>
+        <div class="move-grid">
+          <article class="move-card"><div class="visual"><span class="tag">热身</span><img src="front-split-assets/09-brisk-walking.gif" alt="快走升温 GIF"></div><div class="move-body"><h3>快走升温</h3><p>Brisk Walking</p><p class="cue">走到身体微热即可，不需走到气喘。</p></div></article>
+          <article class="move-card"><div class="visual"><span class="tag">动态热身</span><img src="front-split-assets/10-leg-swing.gif" alt="腿前后摆 GIF"></div><div class="move-body"><h3>腿前后摆</h3><p>Leg Swing</p><p class="cue">扶稳固定物，从小幅度开始；骨盆不要随腿大幅旋转。</p></div></article>
+          <article class="move-card"><div class="visual"><span class="tag">髋部热身</span><img src="front-split-assets/11-hip-circle.gif" alt="站姿髋绕环 GIF"></div><div class="move-body"><h3>站姿髋绕环</h3><p>Standing Hip Circle</p><p class="cue">抬膝画圈，支撑腿膝盖微屈，躯干保持稳定。</p></div></article>
+          <article class="move-card"><div class="visual"><span class="tag">腘绳肌力量</span><img src="front-split-assets/07-romanian-deadlift.gif" alt="罗马尼亚硬拉 GIF"></div><div class="move-body"><h3>罗马尼亚硬拉</h3><p>Romanian Deadlift</p><p class="cue">膝微屈、髋后移，重量贴腿；只下降到背部仍能保持中立的位置。</p></div></article>
+          <article class="move-card"><div class="visual"><span class="tag">主动柔韧</span><img src="front-split-assets/17-active-straight-leg-raise.gif" alt="仰卧主动直腿抬高 GIF"></div><div class="move-body"><h3>主动直腿抬高</h3><p>Active Straight-leg Raise</p><p class="cue">靠髋部主动抬腿，不用手拉；到顶端停 1 秒再慢慢放下。</p></div></article>
+          <article class="move-card"><div class="visual"><span class="tag">前腿后侧</span><img src="front-split-assets/03-half-split-hamstring.gif" alt="半劈叉腘绳肌拉伸动作示意"></div><div class="move-body"><h3>半劈叉</h3><p>Half-split Hamstring Stretch</p><p class="cue">前膝可微屈，保持方髋并从髋部折叠，不弓背追求更低。</p></div></article>
+          <article class="move-card"><div class="visual"><span class="tag">单腿力量</span><img src="front-split-assets/12-reverse-lunge.gif" alt="反向弓步 GIF"></div><div class="move-body"><h3>反向弓步</h3><p>Reverse Lunge</p><p class="cue">后脚向后落地，前脚完整踩稳；保持骨盆朝正前方。</p></div></article>
+          <article class="move-card"><div class="visual"><span class="tag">后腿髋伸</span><img src="front-split-assets/13-hip-flexor.gif" alt="跪姿髋屈肌拉伸 GIF"></div><div class="move-body"><h3>跪姿髋屈肌拉伸</h3><p>Kneeling Hip-flexor Stretch</p><p class="cue">先收臀、后倾骨盆，再轻微前移；若腰部挤压说明幅度过大。</p></div></article>
+          <article class="move-card"><div class="visual"><span class="tag">股四头肌</span><img src="front-split-assets/18-couch-stretch.gif" alt="沙发式股四头拉伸 GIF"></div><div class="move-body"><h3>沙发式拉伸</h3><p>Couch Stretch</p><p class="cue">后膝垫软垫，收臀、肋骨下沉；腰部不能用力后仰。</p></div></article>
+          <article class="move-card"><div class="visual"><span class="tag">臀部力量</span><img src="front-split-assets/06-glute-bridge.gif" alt="臀桥动作示意"></div><div class="move-body"><h3>臀桥</h3><p>Glute Bridge</p><p class="cue">脚跟发力、顶部夹臀；后腿髋伸能力越好，越不必靠塌腰下叉。</p></div></article>
+          <article class="move-card"><div class="visual"><span class="tag">单腿力量</span><img src="front-split-assets/08-bulgarian-split-squat.gif" alt="保加利亚分腿蹲动作示意"></div><div class="move-body"><h3>保加利亚分腿蹲</h3><p>Bulgarian Split Squat</p><p class="cue">前脚承担主要负荷，后脚只辅助平衡；保持骨盆正对前方。</p></div></article>
+          <article class="move-card"><div class="visual"><span class="tag">髋部控制</span><img src="front-split-assets/14-lateral-lunge.gif" alt="侧向弓步 GIF"></div><div class="move-body"><h3>侧向弓步</h3><p>Lateral Lunge</p><p class="cue">臀部向后坐，弯曲侧膝盖跟随脚尖，另一腿自然伸直。</p></div></article>
+          <article class="move-card"><div class="visual"><span class="tag">单腿髋伸</span><img src="front-split-assets/15-single-leg-glute-bridge.gif" alt="单腿臀桥 GIF"></div><div class="move-body"><h3>单腿臀桥</h3><p>Single-leg Glute Bridge</p><p class="cue">骨盆保持水平；若腰部代偿，先缩小动作幅度。</p></div></article>
+          <article class="move-card"><div class="visual"><span class="tag">低弓步</span><img src="front-split-assets/19-low-lunge.gif" alt="低弓步 GIF"></div><div class="move-body"><h3>低弓步</h3><p>Low Lunge</p><p class="cue">后膝有软垫，收臀并保持胸口上提，不向前挤压腰椎。</p></div></article>
+          <article class="move-card"><div class="visual"><span class="tag">动态活动度</span><img src="front-split-assets/19-low-lunge.gif" alt="动态低弓步 GIF"></div><div class="move-body"><h3>动态低弓步</h3><p>Dynamic Low Lunge</p><p class="cue">在可控范围内前后缓慢移动，不在末端弹震。</p></div></article>
+          <article class="move-card"><div class="visual"><span class="tag">PNF</span><img src="front-split-assets/16-hamstring-strap-stretch.gif" alt="腘绳肌 PNF GIF"></div><div class="move-body"><h3>腘绳肌 PNF</h3><p>Contract–Relax Hamstring</p><p class="cue">脚跟向下压带 5 秒，力度约 30–40%；完全放松后保持 20 秒。</p></div></article>
+          <article class="move-card"><div class="visual"><span class="tag">PNF</span><img src="front-split-assets/13-hip-flexor.gif" alt="髋屈肌 PNF GIF"></div><div class="move-body"><h3>髋屈肌 PNF</h3><p>Contract–Relax Hip Flexor</p><p class="cue">后膝轻压垫 5 秒，收臀；放松后再进入拉伸 20 秒。</p></div></article>
+          <article class="move-card"><div class="visual"><span class="tag">专项位置</span><img src="front-split-assets/20-front-split.gif" alt="支撑竖叉 GIF"></div><div class="move-body"><h3>支撑竖叉</h3><p>Supported Front Split</p><p class="cue">双手放瑜伽砖承重，前腿坐骨向后、后腿髋点向前，退出时先屈膝。</p></div></article>
+          <article class="move-card"><div class="visual"><span class="tag">末端力量</span><img src="front-split-assets/20-front-split.gif" alt="竖叉等长收缩 GIF"></div><div class="move-body"><h3>竖叉位“拖地”等长</h3><p>Front-split Isometric</p><p class="cue">双脚像要向中间拖但不移动，力度只用 30–40%，保持 8–10 秒。</p></div></article>
+          <article class="move-card"><div class="visual"><span class="tag">主动控制</span><img src="front-split-assets/20-front-split.gif" alt="方髋滑入竖叉 GIF"></div><div class="move-body"><h3>方髋滑入竖叉</h3><p>Square-hip Split Slide</p><p class="cue">双手支撑，慢慢滑入并主动退出；一旦髋部旋开就停止下降。</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head"><div><div class="section-kicker">Safety & Tracking</div><h2>安全阈值与复测</h2></div></div>
+        <div class="rule-grid">
+          <article class="panel green"><h3>可以继续的感觉</h3><ul><li>肌肉有均匀拉伸感，强度约 3–6/10。</li><li>动作中能持续呼吸，不需要憋气硬撑。</li><li>训练后轻微酸胀，第二天活动后明显缓解。</li><li>左右侧分别记录，不用强迫弱侧追平强侧。</li></ul></article>
+          <article class="panel amber"><h3>立即停止的信号</h3><ul><li>锐痛、撕裂感、麻木、放射痛或关节深处卡压。</li><li>膝盖、腹股沟或坐骨附近出现明确刺痛。</li><li>疼痛持续超过 24 小时，或影响走路、上下楼。</li><li>旧伤复发、出现瘀青或明显肿胀时停止训练并就医。</li></ul></article>
+        </div>
+        <div class="panel" style="margin-top:16px"><h3>每周一次，同条件测量</h3><p>固定在周五热身后、正式训练前测量；用同一块垫子和同一组瑜伽砖。不要冷身测试。</p><div class="measure"><div><b>左腿在前</b><span>骨盆最低点离地高度</span></div><div><b>右腿在前</b><span>骨盆最低点离地高度</span></div><div><b>24小时反应</b><span>0–10 分疼痛/不适</span></div></div><p style="margin-bottom:0;color:var(--muted);font-size:13px">连续两周无进步很正常；若动作质量更好、方髋更稳定，也属于有效进步。</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head"><div><div class="section-kicker">Evidence Notes</div><h2>编排依据与图片来源</h2><p class="sub">计划综合使用静态拉伸、PNF 与全幅度力量训练；图片仅用于动作识别，实际训练以动作提示和无痛范围为准。</p></div></div>
+        <div class="sources">
+          <article class="source-card"><b>热身与拉伸剂量</b><p>肌肉升温后进行拉伸；单次可保持 10–30 秒并重复。</p><a href="https://www.heart.org/en/healthy-living/exercise-and-physical-activity/fitness-basics/flexibility-exercise-stretching" target="_blank" rel="noopener">American Heart Association ↗</a></article>
+          <article class="source-card"><b>长期柔韧性训练</b><p>系统综述显示，持续的静态拉伸训练能提升关节活动范围。</p><a href="https://pubmed.ncbi.nlm.nih.gov/39614059/" target="_blank" rel="noopener">Sports Medicine / PubMed ↗</a></article>
+          <article class="source-card"><b>力量训练与活动度</b><p>全幅度抗阻训练也可改善活动范围，因此计划同时安排末端力量。</p><a href="https://pubmed.ncbi.nlm.nih.gov/36622555/" target="_blank" rel="noopener">Systematic Review / PubMed ↗</a></article>
+          <article class="source-card"><b>竖叉主要受限组织</b><p>前腿以腘绳肌为主，后腿以髋屈肌和股四头为主。</p><a href="https://www.daniwinksflexibility.com/bendy-blog/what-muscles-do-i-need-to-stretch-for-the-front-splits" target="_blank" rel="noopener">Dani Winks Flexibility ↗</a></article>
+          <article class="source-card"><b>标准动作 GIF</b><p>热身、弓步与基础力量动作来自 TrainAI 可下载动作媒体目录，文件含帧数与校验信息。</p><a href="https://www.trainaiapp.com/exercise-media/" target="_blank" rel="noopener">TrainAI Creator Media ↗</a></article>
+          <article class="source-card"><b>竖叉专项 GIF</b><p>低弓步、半劈叉与前后竖叉演示来自柔韧训练及瑜伽动作资源。</p><a href="https://www.bheemashakti.yoga/model-class-1" target="_blank" rel="noopener">Bheemashakti Yoga School ↗</a></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="wrap">本计划适用于一般健身与柔韧训练，不替代医疗诊断或康复处方。训练不需要追求疼痛，也不要让他人推压身体进入竖叉。</div></footer>
+  <script>
+    const cards=[...document.querySelectorAll('.day-card')];
+    document.querySelectorAll('.session li[data-gif]').forEach(item=>{
+      const img=document.createElement('img');
+      img.className='mini-gif';
+      img.src=item.dataset.gif;
+      img.alt=(item.querySelector('b')?.textContent||'训练动作')+' GIF演示';
+      img.loading='lazy';
+      item.prepend(img);
+    });
+    document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',()=>{
+      document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));
+      btn.classList.add('active');
+      const key=btn.dataset.filter;
+      cards.forEach(card=>card.hidden=key!=='all'&&card.dataset.day!==key);
+    }));
+    document.querySelectorAll('[data-check]').forEach(box=>{
+      const key='front-split-'+box.dataset.check;
+      try{box.checked=localStorage.getItem(key)==='1'}catch(e){}
+      box.addEventListener('change',()=>{try{localStorage.setItem(key,box.checked?'1':'0')}catch(e){}});
+    });
+  </script>
+</body>
+</html>

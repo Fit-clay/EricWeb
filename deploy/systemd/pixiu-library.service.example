@@ -9,7 +9,10 @@ Group=pixiu
 WorkingDirectory=/opt/pixiu-library/current
 Environment=NODE_ENV=production
 EnvironmentFile=/etc/pixiu-library.env
-ExecStart=/usr/bin/node /opt/pixiu-library/current/.next/standalone/server.js
+ExecStart=/opt/pixiu-library/current/runtime/node --max-old-space-size=192 --max-semi-space-size=4 /opt/pixiu-library/current/.next/standalone/server.js
+MemoryAccounting=true
+MemoryHigh=256M
+MemoryMax=320M
 Restart=always
 RestartSec=5
 TimeoutStopSec=20

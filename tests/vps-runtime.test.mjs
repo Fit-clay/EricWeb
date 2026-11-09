@@ -7,6 +7,8 @@ import path from "node:path";
 import test from "node:test";
 
 const projectRoot = path.resolve(import.meta.dirname, "..");
+const standaloneRoot = process.env.STANDALONE_ROOT || path.join(projectRoot, ".next", "standalone");
+const runtimeNode = process.env.STANDALONE_NODE || process.execPath;
 
 async function getFreePort() {
   const server = createServer();
@@ -43,12 +45,12 @@ test("standalone VPS 构建可提供页面、HTML 文件和 SQLite API", async (
   const temporaryRoot = await mkdtemp(path.join(os.tmpdir(), "pixiu-vps-test-"));
   const htmlRoot = path.join(temporaryRoot, "html");
   const databasePath = path.join(temporaryRoot, "pixiu.sqlite");
-  await cp(path.join(projectRoot, "html-pages"), htmlRoot, { recursive: true });
+  await cp(process.env.HTML_SOURCE_ROOT || path.join(projectRoot, "html-pages"), htmlRoot, { recursive: true });
 
   const port = await getFreePort();
   const baseUrl = `http://127.0.0.1:${port}`;
   const logs = [];
-  const child = spawn(process.execPath, [path.join(projectRoot, ".next", "standalone", "server.js")], {
+  const child = spawn(runtimeNode, [path.join(standaloneRoot, "server.js")], {
     cwd: projectRoot,
     env: {
       ...process.env,

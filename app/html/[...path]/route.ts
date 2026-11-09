@@ -1,5 +1,7 @@
-import { readFile } from "node:fs/promises";
+import { createReadStream } from "node:fs";
+import { stat } from "node:fs/promises";
 import path from "node:path";
+import { Readable } from "node:stream";
 import { resolveHtmlAsset } from "../../../Service/html/pages";
 
 export const runtime = "nodejs";
@@ -31,7 +33,7 @@ const contentTypes: Record<string, string> = {
 };
 
 export async function GET(
-  _request: Request,
+  request: Request,
   { params }: { params: Promise<{ path: string[] }> },
 ) {
   const { path: pathSegments } = await params;
@@ -42,12 +44,14 @@ export async function GET(
   }
 
   const extension = path.extname(filePath).toLowerCase();
-  const body = await readFile(filePath);
+  const file = await stat(filePath);
+  const body = Readable.toWeb(createReadStream(filePath, { signal: request.signal }));
   const isHtml = extension === ".html" || extension === ".htm";
 
-  return new Response(new Uint8Array(body), {
+  return new Response(body as ReadableStream<Uint8Array>, {
     headers: {
       "content-type": contentTypes[extension] || "application/octet-stream",
+      "content-length": String(file.size),
       "cache-control": isHtml ? "no-cache" : "public, max-age=3600",
       "x-content-type-options": "nosniff",
     },
